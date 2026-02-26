@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ru">
+<h2>Вход</h2>
+    <form method="post">
+        <label>Логин:</label>
+        <input type="text" name="username" required><br><br>
+        <label>Пароль:</label>
+        <input type="password" name="password" required><br><br>
+        <button type="submit">Войти</button>
+    </form>
+
+        <p style="color: red;">{{ error }}</p>
+
+        <p>Вы успешно вошли! Перейдите на <a href="/me">личную страницу</a>.</p>
+</html>
