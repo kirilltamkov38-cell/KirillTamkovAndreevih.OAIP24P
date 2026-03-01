@@ -1,0 +1,7 @@
+{% if (a >= b and a <= c) or (a <= b and a >= c) %}
+    {{ a }}
+{% elif (b >= a and b <= c) or (b <= a and b >= c) %}
+    {{ b }}
+{% else %}
+    {{ c }}
+{% endif %}
