@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вход</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Главная</a> |
+        <a href="/books">Список книг</a> |
+        {% if session.username %}
+            <a href="/add">Добавить книгу</a> |
+            <a href="/profile">Профиль ({{ session.username }})</a> |
+            <a href="/logout">Выйти</a>
+        {% else %}
+            <a href="/login">Войти</a>
+        {% endif %}
+    </nav>
+    <hr>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div style="color: {% if category == 'success' %}green{% elif category == 'danger' %}red{% elif category == 'warning' %}orange{% else %}blue{% endif %};
+                            border: 1px solid; padding: 10px; margin: 5px 0;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <h1>Вход в систему</h1>
+
+    <form method="POST">
+        <div>
+            <label for="username">Логин:</label><br>
+            <input type="text" id="username" name="username" required
+                   style="width: 200px; padding: 5px;">
+        </div>
+        <br>
+
+        <div>
+            <label for="password">Пароль:</label><br>
+            <input type="password" id="password" name="password" required
+                   style="width: 200px; padding: 5px;">
+        </div>
+        <br>
+
+        <button type="submit" style="padding: 10px 20px;">Войти</button>
+    </form>
+
+    <p>Подсказка: логин <strong>admin</strong>, пароль <strong>admin</strong></p>
+</body>
+</html>
