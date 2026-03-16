@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Главная - Каталог книг</title>
+</head>
+<body>
+    <!-- Меню навигации -->
+    <nav>
+        <a href="/">Главная</a> |
+        <a href="/books">Список книг</a> |
+        {% if session.username %}
+            <a href="/add">Добавить книгу</a> |
+            <a href="/profile">Профиль ({{ session.username }})</a> |
+            <a href="/logout">Выйти</a>
+        {% else %}
+            <a href="/login">Войти</a>
+        {% endif %}
+    </nav>
+    <hr>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div style="color: {% if category == 'success' %}green{% elif category == 'danger' %}red{% elif category == 'warning' %}orange{% else %}blue{% endif %};
+                            border: 1px solid; padding: 10px; margin: 5px 0;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <h1>Добро пожаловать в каталог книг!</h1>
+    <p>На этом сайте вы можете:</p>
+    <ul>
+        <li>Просматривать список книг</li>
+        <li>Смотреть детальную информацию о книгах</li>
+        <li>Добавлять новые книги (после авторизации)</li>
+    </ul>
+</body>
+</html>
