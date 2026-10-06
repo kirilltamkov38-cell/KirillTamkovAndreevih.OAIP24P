@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ movie.title }}</title>
+</head>
+<body>
+    <h1>{{ movie.title }}</h1>
+
+    <p>Год выпуска: {{ movie.year }}</p>
+    <p>Жанр: {{ movie.genre }}</p>
+    <p>Рейтинг: {{ movie.rating }}</p>
+        {% if movie.rating >= 8.5 %}
+            <p>Рекомендуем посмотреть
+        {% endif %}
+    </p>
+
+    <h3>Описание:</h3>
+    <p>{{ movie.description }}</p>
+
+    <br>
+    <a href="/">← Назад к списку</a>
+</body>
+</html>
